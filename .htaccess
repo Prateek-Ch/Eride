@@ -1,0 +1,22 @@
+RewriteEngine On
+rewritecond %{http_host} !www.eride.org.in [nc]
+rewriterule ^(.*)$ http://www.eride.org.in/$1 [r=301,nc] 
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+# compress text, html, php, javascript, css, xml:
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/php
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/x-javascript
+
+# Or, compress certain file types by extension:
+<files *.php>
+SetOutputFilter DEFLATE
+</files>
